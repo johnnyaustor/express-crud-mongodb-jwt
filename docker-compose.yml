@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  agus-triantoro-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: agus-triantoro-api
+    restart: always
+    env_file: .env_docker
+    environment: 
+      - PORT=${PORT}
+    links: 
+      - agus-triantoro-mongodb
+    build: .
+    ports:
+      - 80:3000
+    volumes:
+      - ./:/code
+  agus-triantoro-mongodb:
+    container_name: agus-triantoro-mongodb
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - agus-triantoro-mongodb:/data/db
+volumes:
+ agus-triantoro-mongodb:
