@@ -37,8 +37,8 @@ $ npm run start:prod
 ## Dependency
 
 ```bash
-$ docker run mongo
-$ docker run johnnyaustor/agus-triantoro-api
+$ docker run -p 27017:27017 -d mongo
+$ docker run --network="host" -d johnnyaustor/agus-triantoro-api
 ```
 
 mongodb://localhost:27017
